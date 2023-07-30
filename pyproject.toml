@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-django = "^4.2.3"
+django = "^3.2.20"
 
 
 [build-system]
