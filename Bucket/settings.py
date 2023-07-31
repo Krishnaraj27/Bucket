@@ -12,10 +12,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
-from dotenv import load_dotenv
-load_dotenv()
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-e)a9oxtrq2*cj=d%ve0_+4%bfv2@cfu4wc%i#9$o)mlpwzpo37'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['.verce.app']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -81,13 +77,8 @@ WSGI_APPLICATION = 'Bucket.wsgi.application'
 
 DATABASES = {
     'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-        'URL': os.getenv('postgres://main_kgkz_user:yyma0BEdJMDXdprh9QnfLBEPeKaqLYFB@dpg-cj3autt9aq0e0q6crk00-a.oregon-postgres.render.com/main_kgkz'),
-        'NAME': os.getenv('main'),
-        'USER': os.getenv('main_kgkz_user'),
-        'PASSWORD': os.getenv('yyma0BEdJMDXdprh9QnfLBEPeKaqLYFB'),
-        'HOST': os.getenv('dpg-cj3autt9aq0e0q6crk00-a'),
-        'PORT': os.getenv('5432'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -127,13 +118,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-#added for deployement 
-
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
