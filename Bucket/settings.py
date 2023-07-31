@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-e)a9oxtrq2*cj=d%ve0_+4%bfv2@cfu4wc%i#9$o)mlpwzpo37
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.verce.app']
 
 
 # Application definition
@@ -77,8 +77,13 @@ WSGI_APPLICATION = 'Bucket.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+       'ENGINE': 'django.db.backends.postgresql',
+        'URL': os.getenv('postgres://main_kgkz_user:yyma0BEdJMDXdprh9QnfLBEPeKaqLYFB@dpg-cj3autt9aq0e0q6crk00-a.oregon-postgres.render.com/main_kgkz'),
+        'NAME': os.getenv('main'),
+        'USER': os.getenv('main_kgkz_user'),
+        'PASSWORD': os.getenv('yyma0BEdJMDXdprh9QnfLBEPeKaqLYFB'),
+        'HOST': os.getenv('dpg-cj3autt9aq0e0q6crk00-a'),
+        'PORT': os.getenv('5432'),
     }
 }
 
